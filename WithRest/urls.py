@@ -1,9 +1,14 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from testapp import views
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+
+router.register('emp',views.EmployeeDataAPI, basename='employee')
+### It automatically finds the corrects urls for base & id
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('emp/',views.EmployeeListCreateAPI.as_view()),
-    path('emp/<int:pk>/',views.EmployeeRetriveUpdateDelete.as_view())
+    path('',include(router.urls))
 ]

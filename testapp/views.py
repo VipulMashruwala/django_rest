@@ -4,7 +4,8 @@ from .serializers import EmployeeSerializer
 # from rest_framework.mixins import ListModelMixin, CreateModelMixin,RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin
 # from rest_framework.generics import GenericAPIView
 # from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView,UpdateAPIView, DestroyAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+# from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework import viewsets
 
 # Create your views here.
 ## ---------------------------- By Using Model Mixixn and Generic API View ------------------- ##
@@ -35,10 +36,17 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 #     def delete(self, request, *args, **kwargs):
 #         return self.destroy(request, *args, **kwargs)
 
-class EmployeeListCreateAPI(ListCreateAPIView):
-    queryset = Employee.objects.all()
-    serializer_class = EmployeeSerializer
+## ------------------------ API Views -------------------------- ##
+# class EmployeeListCreateAPI(ListCreateAPIView):
+#     queryset = Employee.objects.all()
+#     serializer_class = EmployeeSerializer
 
-class EmployeeRetriveUpdateDelete(RetrieveUpdateDestroyAPIView):
+# class EmployeeRetriveUpdateDelete(RetrieveUpdateDestroyAPIView):
+#     queryset = Employee.objects.all()
+#     serializer_class = EmployeeSerializer
+
+
+## ------------------------- Viewsets ------------------------ ##
+class EmployeeDataAPI(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
